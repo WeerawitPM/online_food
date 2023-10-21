@@ -34,7 +34,7 @@ if (isset($_POST['username'])) {
                 $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
                 $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
-                $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
+                $image = $target_dir . $username . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
                     $sql = "INSERT INTO customer (email, username, password, firstname, lastname, phone, address, image) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image')";
                     if ($conn->query($sql) === TRUE) {

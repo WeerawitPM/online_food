@@ -38,7 +38,7 @@ if (isset($_SESSION["type"]) != "restaurant") {
     echo "<p>ที่อยู่: " . $row["address"] . "</p>";
     echo "<p>ชื่อร้าน: " . $row["restaurant_name"] . "</p>";
     echo "<p>ประเภทร้าน: " . $row["restaurant_type"] . "</p>";
-    echo "<p>สถานะร้าน: ". $row["status"] ." </p>"
+    echo "<p>สถานะร้าน: " . $row["status"] . " </p>"
     ?>
     <a href="edit_profile.php"><button>แก้ไขข้อมูล</button></a>
     <a href="edit_password.php"><button>เปลี่ยนรหัสผ่าน</button></a>

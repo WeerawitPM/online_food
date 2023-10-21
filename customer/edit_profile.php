@@ -33,7 +33,7 @@ if (isset($_POST["firstname"])) {
         $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
         $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
-        $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
+        $image = $target_dir . $username . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
             $sql = "UPDATE customer SET firstname = '$firstname', lastname = '$lastname', phone = '$phone', address = '$address', image = '$image' WHERE id = '$id'";
             if ($conn->query($sql) === TRUE) {

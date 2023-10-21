@@ -33,7 +33,7 @@ if (isset($_POST['username'])) {
             if ($result->num_rows > 0) {
                 echo "<script>alert('Email นี้มีผู้ใช้แล้ว')</script>";
             } else {
-                $sql = "SLECT * FROM restaurant WHERE restaurant_name = '$restaurant_name'";
+                $sql = "SELECT * FROM restaurant WHERE restaurant_name = '$restaurant_name'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     echo "<script>alert('ชื่อร้านอาหารนี้มีผู้ใช้แล้ว')</script>";
@@ -42,9 +42,9 @@ if (isset($_POST['username'])) {
                     $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
                     $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
-                    $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
+                    $image = $target_dir . $username . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
-                        $sql = "INSERT INTO restaurant (email, username, password, firstname, lastname, phone, address, image, restaurant_name, restaurant_type, status) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image', '$restaurant_name', '$restaurant_type', '$status)";
+                        $sql = "INSERT INTO restaurant (email, username, password, firstname, lastname, phone, address, image, restaurant_name, restaurant_type, status) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image', '$restaurant_name', '$restaurant_type', '$status')";
                         if ($conn->query($sql) === TRUE) {
                             echo "
                                 <script>
@@ -124,7 +124,7 @@ if (isset($_POST['username'])) {
                     $sql = "SELECT * FROM restaurant_type";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                        echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
                     }
                     ?>
                 </select>
