@@ -2,7 +2,7 @@
 include('../db_connect.php');
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['id'])) {
     header('Location: home.php');
     exit;
 }
@@ -30,16 +30,20 @@ if (isset($_POST['username'])) {
             if ($result->num_rows > 0) {
                 echo "<script>alert('Email นี้มีผู้ใช้แล้ว')</script>";
             } else {
-                //อัปโหลดไฟล์รูปไปยังโฟลเดอร์ images โดยใช้ชื่อไฟล์เป็น username และนามสกุลไฟล์เป็นนามสกุลไฟล์เดิม
-                $target_dir = "images/";
-                $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $image = $target_dir . $username . "." . $imageFileType;
-                if(move_uploaded_file($_FILES["image"]["tmp_name"], $image)) {
+                //อัปโหลดไฟล์รูปไปยังโฟลเดอร์ images
+                $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
+                $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
+                $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
                     $sql = "INSERT INTO customer (email, username, password, firstname, lastname, phone, address, image) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image')";
                     if ($conn->query($sql) === TRUE) {
-                        echo "<script>alert('สมัครสมาชิกสำเร็จ')</script>";
-                        header('Location: login.php');
+                        echo "
+                            <script>
+                                alert('สมัครสมาชิกสำเร็จ');
+                                window.location = 'login.php';
+                            </script>
+                        ";
                         exit;
                     } else {
                         echo "Error: " . $sql . "<br>" . $conn->error;

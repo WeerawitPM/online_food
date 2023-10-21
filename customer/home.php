@@ -6,13 +6,16 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>หน้าแรก</title>
 </head>
 <body>
     <nav>
-        <h1>ทดสอบ</h1>
+        <a href="home.php">หน้าแรก</a>
+        <a href="order.php">คำสั่งซื้อ</a>
+        <a href="order_status.php">สถานะคำสั่งซื้อ</a>
+        <a href="order_history.php">ประวัติคำสั่งซื้อ</a>
+        <a href="profile.php">ข้อมูลส่วนตัว</a>
         <a href="../logout.php">ออกจากระบบ</a>
-
     </nav>
 </body>
 </html>

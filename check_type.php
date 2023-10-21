@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION["username"])) {
+if (isset($_SESSION["id"])) {
     if ($_SESSION["type"] == "customer") {
         header('Location: customer/home.php');
         exit;
