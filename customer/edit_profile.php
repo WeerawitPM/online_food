@@ -99,7 +99,7 @@ if (isset($_POST["username"])) {
             <input type="text" name="address" id="address" value="<?php echo $address; ?>" required>
         </p>
         <p>
-            <label for="email">Email</label>
+            <label for="email">อีเมล</label>
             <input type="email" name="email" id="email" value="<?php echo $email; ?>" required>
         </p>
         <button type="submit">บันทึก</button>

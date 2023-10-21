@@ -41,6 +41,7 @@ if (isset($_SESSION["type"]) != "customer") {
     echo "<p>อีเมล: " . $row["email"] . "</p>";
     ?>
     <a href="edit_profile.php"><button>แก้ไขข้อมูล</button></a>
+    <a href="edit_password.php"><button>เปลี่ยนรหัสผ่าน</button></a>
 </body>
 
 </html>
