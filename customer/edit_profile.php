@@ -20,21 +20,38 @@ if (isset($_SESSION["type"]) != "customer") {
     $phone = $row["phone"];
 }
 
-if (isset($_POST["username"])) {
-    $username = $_POST["username"];
+if (isset($_POST["firstname"])) {
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-    $email = $_POST["email"];
 
-    //อัปโหลดไฟล์รูปไปยังโฟลเดอร์ images
-    $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
-    $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
-    $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
-        $sql = "UPDATE customer SET username = '$username', firstname = '$firstname', lastname = '$lastname', phone = '$phone', address = '$address', email = '$email', image = '$image' WHERE id = '$id'";
+    if ($_FILES["image"]["name"]) {
+        //ลบรูปเก่าออกจากโฟลเดอร์ images
+        unlink($image);
+        //อัปโหลดไฟล์รูปไปยังโฟลเดอร์ images
+        $target_dir = "images/"; //โฟลเดอร์ที่เก็บไฟล์รูป
+        $target_file = $target_dir . basename($_FILES["image"]["name"]); //ไฟล์รูปที่อัปโหลด
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
+        $image = $target_file . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
+            $sql = "UPDATE customer SET firstname = '$firstname', lastname = '$lastname', phone = '$phone', address = '$address', image = '$image' WHERE id = '$id'";
+            if ($conn->query($sql) === TRUE) {
+                echo "
+                    <script>
+                        alert('แก้ไขข้อมูลสำเร็จ');
+                        window.location = 'profile.php';
+                    </script>
+                ";
+                exit;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "<script>alert('อัปโหลดรูปไม่สำเร็จ')</script>";
+        }
+    } else {
+        $sql = "UPDATE customer SET username = '$username', firstname = '$firstname', lastname = '$lastname', phone = '$phone', address = '$address', email = '$email' WHERE id = '$id'";
         if ($conn->query($sql) === TRUE) {
             echo "
                 <script>
@@ -46,10 +63,10 @@ if (isset($_POST["username"])) {
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-    } else {
-        echo "<script>alert('อัปโหลดรูปไม่สำเร็จ')</script>";
     }
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -76,11 +93,11 @@ if (isset($_POST["username"])) {
             <img src="<?php echo $image; ?>" width="200">
         <p>
             <label for="image">รูปภาพ</label>
-            <input type="file" name="image" id="image" value="<?php echo $image; ?>">
+            <input type="file" name="image" id="image">
         </p>
         <p>
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" value="<?php echo $username; ?>" required>
+            <input type="text" name="username" id="username" value="<?php echo $username; ?>" disabled>
         </p>
         <p>
             <label for="firstname">ชื่อ</label>
@@ -100,7 +117,7 @@ if (isset($_POST["username"])) {
         </p>
         <p>
             <label for="email">อีเมล</label>
-            <input type="email" name="email" id="email" value="<?php echo $email; ?>" required>
+            <input type="email" name="email" id="email" value="<?php echo $email; ?>" disabled>
         </p>
         <button type="submit">บันทึก</button>
     </form>

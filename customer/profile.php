@@ -14,7 +14,7 @@ if (isset($_SESSION["type"]) != "customer") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประวัติส่วนตัว</title>
+    <title>ข้อมูลส่วนตัว</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@ if (isset($_SESSION["type"]) != "customer") {
         <a href="profile.php">ข้อมูลส่วนตัว</a>
         <a href="../logout.php">ออกจากระบบ</a>
     </nav>
-    <h1>ประวัติส่วนตัว</h1>
+    <h1>ข้อมูลส่วนตัว</h1>
     <?php
     $id = $_SESSION["id"];
     $sql = "SELECT * FROM customer WHERE id = '$id'";

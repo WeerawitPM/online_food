@@ -1,5 +1,4 @@
 <?php
-include("db_connect.php");
 session_start();
 include("check_type.php");
 ?>
@@ -16,7 +15,7 @@ include("check_type.php");
 
 <body>
     <div>
-        <h1>ยินดีต้อนรับสู่ ...</h1>
+        <h1>ยินดีต้อนรับสู่ Online Food Delivery !</h1>
         <a href="customer/login.php">เข้าสู่ระบบลูกค้า</a><br>
         <a href="restaurant/login.php">เข้าสู่ระบบร้านอาหาร</a><br>
         <a href="rider/login.php">เข้าสู่ระบบผู้ส่งอาหาร</a><br>

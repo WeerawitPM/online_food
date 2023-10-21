@@ -28,6 +28,8 @@ if (isset($_POST["username"])) {
         echo "<script>alert('Username หรือ Password ไม่ถูกต้อง')</script>";
     }
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
