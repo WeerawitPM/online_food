@@ -8,14 +8,14 @@ if (isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
 
-    $sql = "SELECT * FROM customer WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM restaurant WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
         $_SESSION["id"] = $row["id"];
-        $_SESSION["type"] = "customer";
+        $_SESSION["type"] = "restaurant";
 
         echo "
             <script>
@@ -38,12 +38,12 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เข้าสู่ระบบ | ลูกค้า</title>
+    <title>เข้าสู่ระบบ | ร้านอาหาร</title>
 </head>
 
 <body>
     <div>
-        <h1>เข้าสู่ระบบลูกค้า</h1>
+        <h1>เข้าสู่ระบบร้านอาหาร</h1>
         <form action="login.php" method="post">
             <p><label for="username">Username</label>
                 <input type="text" name="username" id="username" required>

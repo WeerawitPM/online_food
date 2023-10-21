@@ -73,7 +73,7 @@ $conn->close();
         <h1>สมัครสมาชิก</h1>
         <form action="register.php" method="post" enctype="multipart/form-data">
             <p>
-                <label for="email">Email</label>
+                <label for="email">อีเมล</label>
                 <input type="email" name="email" id="email" required>
             </p>
             <p>
@@ -81,31 +81,31 @@ $conn->close();
                 <input type="text" name="username" id="username" required>
             </p>
             <p>
-                <label for="password">Password</label>
+                <label for="password">รหัสผ่าน</label>
                 <input type="password" name="password" id="password" required>
             </p>
             <p>
-                <label for="password2">Confirm Password</label>
+                <label for="password2">ยืนยันรหัสผ่าน</label>
                 <input type="password" name="password2" id="password2" required>
             </p>
             <p>
-                <label for="firstname">Firstname</label>
+                <label for="firstname">ชื่อ</label>
                 <input type="text" name="firstname" id="firstname" required>
             </p>
             <p>
-                <label for="lastname">Lastname</label>
+                <label for="lastname">นามสกุล</label>
                 <input type="text" name="lastname" id="lastname" required>
             </p>
             <p>
-                <label for="phone">Phone</label>
+                <label for="phone">เบอร์โทร</label>
                 <input type="text" name="phone" id="phone" required>
             </p>
             <p>
-                <label for="address">Address</label>
+                <label for="address">ที่อยู่</label>
                 <textarea name="address" id="address" cols="30" rows="10" required></textarea>
             </p>
             <p>
-                <label for="image">Image</label>
+                <label for="image">รูปภาพ</label>
                 <input type="file" name="image" id="image" required>
             </p>
             <button type="submit">Register</button>
