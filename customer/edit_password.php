@@ -2,7 +2,7 @@
 include("../db_connect.php");
 session_start();
 
-if (isset($_SESSION["type"]) != "customer") {
+if (isset($_SESSION["id"]) && $_SESSION["type"] != "customer") {
     header('Location: ../index.php');
     exit;
 }

@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION["type"]) != "restaurant") {
+if (isset($_SESSION["id"]) && $_SESSION["type"] == "restaurant") {
+    include("../db_connect.php");
+} else {
     header('Location: ../index.php');
     exit;
 }
@@ -19,7 +21,7 @@ if (isset($_SESSION["type"]) != "restaurant") {
 <body>
     <nav>
         <a href="home.php">หน้าแรก</a>
-        <a href="profile.php">ข้อมูลส่วนตัว</a>
+        <a href="profile.php">ข้อมูลร้านอาหาร</a>
         <a href="../logout.php">ออกจากระบบ</a>
     </nav>
 </body>

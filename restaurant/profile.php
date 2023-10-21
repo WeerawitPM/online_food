@@ -1,11 +1,13 @@
 <?php
-include("../db_connect.php");
 session_start();
 
-if (isset($_SESSION["type"]) != "restaurant") {
+if (isset($_SESSION["id"]) && $_SESSION["type"] == "restaurant") {
+    include("../db_connect.php");
+} else {
     header('Location: ../index.php');
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
