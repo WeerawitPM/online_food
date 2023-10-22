@@ -62,9 +62,8 @@ if (isset($_POST['username'])) {
             }
         }
     }
+    $conn->close();
 }
-
-
 ?>
 
 <!DOCTYPE html>

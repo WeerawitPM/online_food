@@ -30,6 +30,7 @@ if (isset($_POST["username"])) {
     } else {
         echo "<script>alert('Username หรือ Password ไม่ถูกต้อง')</script>";
     }
+    $conn->close();
 }
 ?>
 

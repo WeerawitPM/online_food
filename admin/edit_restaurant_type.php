@@ -17,7 +17,7 @@ if (isset($_POST["name"])) {
             echo "
                 <script>
                     alert('เพิ่มประเภทร้านอาหารสำเร็จ');
-                    window.location = 'restaurant_type.php';
+                    window.location = 'edit_restaurant_type.php';
                 </script>
             ";
             exit;
@@ -25,23 +25,26 @@ if (isset($_POST["name"])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    $conn->close();
 }
 
-if(isset($_POST["delete"])){
+if (isset($_POST["delete"])) {
     $id = $_POST["delete"];
     $sql = "DELETE FROM restaurant_type WHERE id = '$id'";
     if ($conn->query($sql) === TRUE) {
         echo "
             <script>
                 alert('ลบประเภทร้านอาหารสำเร็จ');
-                window.location = 'restaurant_type.php';
+                window.location = 'edit_restaurant_type.php';
             </script>
         ";
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -56,29 +59,33 @@ if(isset($_POST["delete"])){
 <body>
     <?php include("navbar.php"); ?>
     <h1>ประเภทร้านอาหาร</h1>
-    <form action="restaurant_type.php" method="post">
+    <form action="edit_restaurant_type.php" method="post">
         <label for="name">ชื่อประเภทร้านอาหาร:</label>
         <input type="text" name="name" id="name" required>
         <button type="submit">เพิ่ม</button>
     </form>
     <br>
     <table border="1">
-        <tr>
-            <th>ชื่อประเภทร้านอาหาร</th>
-            <th>ลบ</th>
-        </tr>
-        <form action="restaurant_type.php" method="post">
-            <?php
-            $sql = "SELECT * FROM restaurant_type";
-            $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["name"] . "</td>";
-                echo "<td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>";
-                echo "</tr>";
-            }
-            ?>
-        </form>
+        <thead>
+            <tr>
+                <th>ชื่อประเภทร้านอาหาร</th>
+                <th>ลบ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="edit_restaurant_type.php" method="post">
+                <?php
+                $sql = "SELECT * FROM restaurant_type";
+                $result = $conn->query($sql);
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>";
+                    echo "</tr>";
+                }
+                ?>
+            </form>
+        </tbody>
 </body>
 
 </html>

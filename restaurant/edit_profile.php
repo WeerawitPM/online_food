@@ -64,9 +64,8 @@ if (isset($_POST["firstname"])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    $conn->close();
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>

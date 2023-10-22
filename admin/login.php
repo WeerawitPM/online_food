@@ -1,7 +1,7 @@
 <?php
 session_start();
 //ตรวจสอบว่ามีการเข้าสู่ระบบแล้วหรือไม่ ถ้ามีให้กลับไปหน้า home ของแต่ละประเภท
-if(isset($_SESSION["id"])){
+if (isset($_SESSION["id"])) {
     header('Location: home.php');
     exit;
 }
@@ -30,9 +30,8 @@ if (isset($_POST["username"])) {
     } else {
         echo "<script>alert('Username หรือ Password ไม่ถูกต้อง')</script>";
     }
+    $conn->close();
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>

@@ -34,8 +34,8 @@ if (isset($_POST["firstname"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
 }
-
 $conn->close();
 ?>
 

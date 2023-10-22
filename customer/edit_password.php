@@ -31,9 +31,8 @@ if (isset($_POST["old_password"])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    $conn->close();
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
