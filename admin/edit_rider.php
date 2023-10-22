@@ -63,12 +63,12 @@ if(isset($_POST["delete"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>จัดการร้านอาหาร</title>
+    <title>จัดการไรเดอร์</title>
 </head>
 
 <body>
     <?php include("navbar.php"); ?>
-    <h1>จัดการร้านอาหาร</h1>
+    <h1>จัดการไรเดอร์</h1>
     <table border="1">
         <thead>
             <tr>
