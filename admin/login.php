@@ -1,23 +1,23 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) {
+//ตรวจสอบว่ามีการเข้าสู่ระบบแล้วหรือไม่ ถ้ามีให้กลับไปหน้า home ของแต่ละประเภท
+if(isset($_SESSION["id"])){
     header('Location: home.php');
     exit;
 }
 include("../db_connect.php");
-
 if (isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
 
-    $sql = "SELECT * FROM restaurant WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
         $_SESSION["id"] = $row["id"];
-        $_SESSION["type"] = "restaurant";
+        $_SESSION["type"] = "admin";
 
         echo "
             <script>
@@ -40,12 +40,12 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เข้าสู่ระบบ | ร้านอาหาร</title>
+    <title>เข้าสู่ระบบ | ผู้ดูแลระบบ</title>
 </head>
 
 <body>
     <div>
-        <h1>เข้าสู่ระบบร้านอาหาร</h1>
+        <h1>เข้าสู่ระบบผู้ดูแลระบบ</h1>
         <form action="login.php" method="post">
             <p><label for="username">Username</label>
                 <input type="text" name="username" id="username" required>
@@ -57,7 +57,6 @@ $conn->close();
         </form>
         <br>
         <a href="../index.php">กลับหน้าแรก</a>
-        <a href="register.php">สมัครสมาชิก</a>
     </div>
 </body>
 

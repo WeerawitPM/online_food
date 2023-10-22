@@ -1,11 +1,12 @@
 <?php
-include('../db_connect.php');
 session_start();
-
+//ตรวจสอบว่ามีการเข้าสู่ระบบแล้วหรือไม่ ถ้ามีให้กลับไปหน้า home ของแต่ละประเภท
 if (isset($_SESSION['id'])) {
     header('Location: home.php');
     exit;
 }
+
+include("../db_connect.php");
 
 if (isset($_POST['username'])) {
     $email = $_POST['email'];

@@ -1,11 +1,8 @@
 <?php
-include("../db_connect.php");
 session_start();
-
-if (isset($_SESSION["id"]) && $_SESSION["type"] != "restaurant") {
-    header('Location: ../index.php');
-    exit;
-}
+include("check_login.php");
+include("check_type.php");
+include("../db_connect.php");
 
 if (isset($_POST["old_password"])) {
     $id = $_SESSION["id"];

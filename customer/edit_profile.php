@@ -1,24 +1,21 @@
 <?php
-include("../db_connect.php");
 session_start();
+include("check_login.php");
+include("check_type.php");
+include("../db_connect.php");
 
-if (isset($_SESSION["id"]) && $_SESSION["type"] != "customer") {
-    header('Location: ../index.php');
-    exit;
-} else {
-    $id = $_SESSION["id"];
-    $sql = "SELECT * FROM customer WHERE id = '$id'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $image = $row["image"];
-    $username = $row["username"];
-    $firstname = $row["firstname"];
-    $lastname = $row["lastname"];
-    $phone = $row["phone"];
-    $address = $row["address"];
-    $email = $row["email"];
-    $phone = $row["phone"];
-}
+$id = $_SESSION["id"];
+$sql = "SELECT * FROM customer WHERE id = '$id'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$image = $row["image"];
+$username = $row["username"];
+$firstname = $row["firstname"];
+$lastname = $row["lastname"];
+$phone = $row["phone"];
+$address = $row["address"];
+$email = $row["email"];
+$phone = $row["phone"];
 
 if (isset($_POST["firstname"])) {
     $firstname = $_POST["firstname"];
@@ -79,14 +76,7 @@ $conn->close();
 </head>
 
 <body>
-    <nav>
-        <a href="home.php">หน้าแรก</a>
-        <a href="order.php">คำสั่งซื้อ</a>
-        <a href="order_status.php">สถานะคำสั่งซื้อ</a>
-        <a href="order_history.php">ประวัติคำสั่งซื้อ</a>
-        <a href="profile.php">ข้อมูลส่วนตัว</a>
-        <a href="../logout.php">ออกจากระบบ</a>
-    </nav>
+    <?php include("navbar.php"); ?>
     <h1>แก้ไขข้อมูลส่วนตัว</h1>
     <form action="edit_profile.php" enctype="multipart/form-data" method="post">
         <p>

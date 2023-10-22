@@ -1,27 +1,24 @@
 <?php
-include("../db_connect.php");
 session_start();
+include("check_login.php");
+include("check_type.php");
+include("../db_connect.php");
 
-if (isset($_SESSION["id"]) && $_SESSION["type"] != "restaurant") {
-    header('Location: ../index.php');
-    exit;
-} else {
-    $id = $_SESSION["id"];
-    $sql = "SELECT * FROM restaurant WHERE id = '$id'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $image = $row["image"];
-    $username = $row["username"];
-    $firstname = $row["firstname"];
-    $lastname = $row["lastname"];
-    $phone = $row["phone"];
-    $address = $row["address"];
-    $email = $row["email"];
-    $phone = $row["phone"];
-    $restaurant_name = $row["restaurant_name"];
-    $restaurant_type = $row["restaurant_type"];
-    $status = $row["status"];
-}
+$id = $_SESSION["id"];
+$sql = "SELECT * FROM restaurant WHERE id = '$id'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$image = $row["image"];
+$username = $row["username"];
+$firstname = $row["firstname"];
+$lastname = $row["lastname"];
+$phone = $row["phone"];
+$address = $row["address"];
+$email = $row["email"];
+$phone = $row["phone"];
+$restaurant_name = $row["restaurant_name"];
+$restaurant_type = $row["restaurant_type"];
+$status = $row["status"];
 
 if (isset($_POST["firstname"])) {
     $firstname = $_POST["firstname"];
