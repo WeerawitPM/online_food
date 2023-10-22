@@ -38,6 +38,23 @@ if(isset($_POST["banned"])){
     $conn->close();
 }
 
+if(isset($_POST["delete"])){
+    $id = $_POST["delete"];
+    $sql = "DELETE FROM customer WHERE id = '$id'";
+    if ($conn->query($sql) === TRUE) {
+        echo "
+            <script>
+                alert('ลบสำเร็จ');
+                window.location = 'edit_customer.php';
+            </script>
+        ";
+        exit;
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
+}
+
 ?>
 
 <!DOCTYPE html>

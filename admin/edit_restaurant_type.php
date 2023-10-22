@@ -53,7 +53,7 @@ if (isset($_POST["delete"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประเภทร้านอาหาร</title>
+    <title>จัดการประเภทร้านอาหาร</title>
 </head>
 
 <body>
