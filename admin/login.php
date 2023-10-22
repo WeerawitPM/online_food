@@ -6,6 +6,7 @@ if(isset($_SESSION["id"])){
     exit;
 }
 include("../db_connect.php");
+
 if (isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = md5($_POST["password"]);

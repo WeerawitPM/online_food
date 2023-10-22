@@ -15,7 +15,6 @@ $lastname = $row["lastname"];
 $phone = $row["phone"];
 $address = $row["address"];
 $email = $row["email"];
-$phone = $row["phone"];
 $restaurant_name = $row["restaurant_name"];
 $restaurant_type = $row["restaurant_type"];
 $status = $row["status"];

@@ -15,7 +15,6 @@ $lastname = $row["lastname"];
 $phone = $row["phone"];
 $address = $row["address"];
 $email = $row["email"];
-$phone = $row["phone"];
 
 if (isset($_POST["firstname"])) {
     $firstname = $_POST["firstname"];

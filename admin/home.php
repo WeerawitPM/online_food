@@ -2,8 +2,8 @@
 session_start();
 include("check_login.php");
 include("check_type.php");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
