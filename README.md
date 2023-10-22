@@ -1,9 +1,7 @@
-# online_food_delivery
-
-1. สร้างฐานข้อมูลชื่อ fooddelivery
-2. สร้างตารางลูกค้าชื่อ customer
-ข้อมูลในตาราง customer ประกอบด้วย
-
+# วิธีการติดตั้ง
+#### 1. สร้างฐานข้อมูลชื่อ fooddelivery
+#### 2. สร้างตารางลูกค้าชื่อ customer
+#### ข้อมูลในตาราง customer ประกอบด้วย
 | Name | Type | Length | Primary Key | Auto Increment |
 | --- | --- | --- | --- | --- |
 | id | int | - | Yes | Yes |
@@ -15,3 +13,4 @@
 | phone | varchar | 10 | No | No |
 | address | varchar | 255 | No | No |
 | image | varchar | 255 | No | No |
+| status | varchar | 255 | No | No |
