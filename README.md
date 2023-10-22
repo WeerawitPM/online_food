@@ -16,6 +16,8 @@
 | image | varchar | 255 | No | No |
 | status | varchar | 255 | No | No |
 
+#
+
 #### 3. สร้างตารางร้านอาหารชื่อ restaurant
 ข้อมูลในตาราง restaurant ประกอบด้วย
 
@@ -33,3 +35,5 @@
 | restaurant_name | varchar | 255 | No | No |
 | restaurant_type | varchar | 255 | No | No |
 | status | varchar | 255 | No | No |
+
+#
