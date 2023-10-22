@@ -80,11 +80,7 @@ $conn->close();
 </head>
 
 <body>
-    <nav>
-        <a href="home.php">หน้าแรก</a>
-        <a href="profile.php">ข้อมูลร้านอาหาร</a>
-        <a href="../logout.php">ออกจากระบบ</a>
-    </nav>
+    <?php include("navbar.php"); ?>
     <h1>แก้ไขข้อมูลร้านอาหาร</h1>
     <form action="edit_profile.php" enctype="multipart/form-data" method="post">
         <p>
