@@ -4,7 +4,7 @@
 2. สร้างตารางลูกค้าชื่อ customer
 ข้อมูลในตาราง customer ประกอบด้วย
 
-| Name | Type | Lenght | Primary Key | Auto Increment |
+| Name | Type | Length | Primary Key | Auto Increment |
 | --- | --- | --- | --- | --- |
 | id | int | - | Yes | Yes |
 | email | varchar | 255 | No | No |
