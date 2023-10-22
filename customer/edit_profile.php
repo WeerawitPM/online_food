@@ -100,12 +100,12 @@ if (isset($_POST["firstname"])) {
             <input type="text" name="phone" id="phone" value="<?php echo $phone; ?>" required>
         </p>
         <p>
-            <label for="address">ที่อยู่</label>
-            <input type="text" name="address" id="address" value="<?php echo $address; ?>" required>
-        </p>
-        <p>
             <label for="email">อีเมล</label>
             <input type="email" name="email" id="email" value="<?php echo $email; ?>" disabled>
+        </p>
+        <p>
+            <label for="address">ที่อยู่</label>
+            <input type="text" name="address" id="address" value="<?php echo $address; ?>" required>
         </p>
         <button type="submit">บันทึก</button>
     </form>
