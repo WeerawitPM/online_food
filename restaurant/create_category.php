@@ -79,10 +79,12 @@ if (isset($_POST["delete"])) {
                 $sql = "SELECT * FROM product_category WHERE restaurant_id = '$restaurant_id'";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>";
-                    echo "</tr>";
+                    echo "
+                    <tr>
+                        <td>" . $row["name"] . "</td>
+                        <td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>
+                    </tr>
+                    ";
                 }
                 ?>
             </form>
