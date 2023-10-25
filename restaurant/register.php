@@ -17,7 +17,6 @@ if (isset($_POST['username'])) {
     $address = $_POST['address'];
     $restaurant_name = $_POST['restaurant_name'];
     $restaurant_type = $_POST['restaurant_type'];
-    $status = "รอการตรวจสอบ";
 
     if ($password != $password2) {
         echo "<script>alert('Password ไม่ตรงกัน')</script>";
@@ -43,7 +42,7 @@ if (isset($_POST['username'])) {
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //นามสกุลไฟล์รูป
                     $image = $target_dir . $username . "." . $imageFileType; //ไฟล์รูปที่จะเก็บลงในฐานข้อมูล
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
-                        $sql = "INSERT INTO restaurant (email, username, password, firstname, lastname, phone, address, image, restaurant_name, restaurant_type, status) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image', '$restaurant_name', '$restaurant_type', '$status')";
+                        $sql = "INSERT INTO restaurant (email, username, password, firstname, lastname, phone, address, image, restaurant_name, restaurant_type) VALUES ('$email', '$username', '$password', '$firstname', '$lastname', '$phone', '$address', '$image', '$restaurant_name', '$restaurant_type')";
                         if ($conn->query($sql) === TRUE) {
                             echo "
                                 <script>
