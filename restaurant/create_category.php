@@ -6,13 +6,14 @@ include("../db_connect.php");
 
 if (isset($_POST["name"])) {
     $name = $_POST["name"];
+    $restaurant_id = $_SESSION["id"];
 
     $sql = "SELECT * FROM food_category WHERE name = '$name'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<script>alert('หมวดหมู่อาหารนี้มีอยู่แล้ว')</script>";
     } else {
-        $sql = "INSERT INTO food_category (name) VALUES ('$name')";
+        $sql = "INSERT INTO food_category (name, restaurant_id) VALUES ('$name', '$restaurant_id')";
         if ($conn->query($sql) === TRUE) {
             echo "
                 <script>
@@ -75,17 +76,17 @@ if (isset($_POST["delete"])) {
         <tbody>
             <form action="create_category.php" method="post">
                 <?php
-                $restaurant_id = $_SESSION["id"];
-                $sql = "SELECT * FROM food_category WHERE restaurant_id = '$restaurant_id'";
+                $sql = "SELECT * FROM food_category WHERE restaurant_id = '" . $_SESSION["id"] . "'";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "
-                    <tr>
-                        <td>" . $row["name"] . "</td>
-                        <td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>
-                    </tr>
+                        <tr>
+                            <td>" . $row["name"] . "</td>
+                            <td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>
+                        </tr>
                     ";
                 }
+                $conn->close();
                 ?>
             </form>
         </tbody>

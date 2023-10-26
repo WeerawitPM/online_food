@@ -25,7 +25,6 @@ if (isset($_POST["name"])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-    $conn->close();
 }
 
 if (isset($_POST["delete"])) {
@@ -42,7 +41,6 @@ if (isset($_POST["delete"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $conn->close();
 }
 
 ?>
@@ -83,6 +81,7 @@ if (isset($_POST["delete"])) {
                     echo "<td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>";
                     echo "</tr>";
                 }
+                $conn->close();
                 ?>
             </form>
         </tbody>
