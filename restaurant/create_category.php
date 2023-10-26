@@ -7,12 +7,12 @@ include("../db_connect.php");
 if (isset($_POST["name"])) {
     $name = $_POST["name"];
 
-    $sql = "SELECT * FROM product_category WHERE name = '$name'";
+    $sql = "SELECT * FROM food_category WHERE name = '$name'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<script>alert('หมวดหมู่อาหารนี้มีอยู่แล้ว')</script>";
     } else {
-        $sql = "INSERT INTO product_category (name) VALUES ('$name')";
+        $sql = "INSERT INTO food_category (name) VALUES ('$name')";
         if ($conn->query($sql) === TRUE) {
             echo "
                 <script>
@@ -30,7 +30,7 @@ if (isset($_POST["name"])) {
 
 if (isset($_POST["delete"])) {
     $id = $_POST["delete"];
-    $sql = "DELETE FROM product_category WHERE id = '$id'";
+    $sql = "DELETE FROM food_category WHERE id = '$id'";
     if ($conn->query($sql) === TRUE) {
         echo "
             <script>
@@ -58,7 +58,7 @@ if (isset($_POST["delete"])) {
 
 <body>
     <?php include("navbar.php"); ?>
-    <h1>หมวดหมู่อาหาร</h1>
+    <h1>จัดการหมวดหมู่อาหาร</h1>
     <form action="create_category.php" method="post">
         <label for="name">ชื่อหมวดหมู่อาหาร:</label>
         <input type="text" name="name" id="name" required>
@@ -76,7 +76,7 @@ if (isset($_POST["delete"])) {
             <form action="create_category.php" method="post">
                 <?php
                 $restaurant_id = $_SESSION["id"];
-                $sql = "SELECT * FROM product_category WHERE restaurant_id = '$restaurant_id'";
+                $sql = "SELECT * FROM food_category WHERE restaurant_id = '$restaurant_id'";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "
