@@ -18,38 +18,38 @@
 #### 3. สร้างตารางลูกค้าชื่อ customer
 ข้อมูลในตาราง customer ประกอบด้วย
 
-| Name | Type | Length | Null Index | Auto Increment |
-| --- | --- | --- | --- | --- |
-| id | int | - | Primary | Yes |
-| email | varchar | 255 | Unique | No |
-| username | varchar | 255 | Unique | No |
-| password | varchar | 255 | - | No |
-| firstname | varchar | 255 | - | No |
-| lastname | varchar | 255 | - | No |
-| phone | varchar | 10 | - | No |
-| address | varchar | 255 | - | No |
-| image | varchar | 255 | - | No |
-| status | varchar | 255 | - | No |
+| Name | Type | Length | Default | Null Index | Auto Increment |
+| --- | --- | --- | --- | --- | --- |
+| id | int | - | - | Primary | Yes |
+| email | varchar | 255 | - | Unique | No |
+| username | varchar | 255 | - | Unique | No |
+| password | varchar | 255 | - | - | No |
+| firstname | varchar | 255 | - | - | No |
+| lastname | varchar | 255 | - | - | No |
+| phone | varchar | 10 | - | - | No |
+| address | varchar | 255 | - | - | No |
+| image | varchar | 255 | - | - | No |
+| status | varchar | 255 | ปกติ | - | No |
 
 #
 
 #### 4. สร้างตารางร้านอาหารชื่อ restaurant
 ข้อมูลในตาราง restaurant ประกอบด้วย
 
-| Name | Type | Length | Null Index | Auto Increment |
-| --- | --- | --- | --- | --- |
-| id | int | - | Primary | Yes |
-| email | varchar | 255 | Unique | No |
-| username | varchar | 255 | Unique | No |
-| password | varchar | 255 | - | No |
-| firstname | varchar | 255 | - | No |
-| lastname | varchar | 255 | - | No |
-| phone | varchar | 10 | - | No |
-| address | varchar | 255 | - | No |
-| image | varchar | 255 | - | No |
-| restaurant_name | varchar | 255 | - | No |
-| restaurant_type | varchar | 255 | - | No |
-| status | varchar | 255 | - | No |
+| Name | Type | Length | Default | Null Index | Auto Increment |
+| --- | --- | --- | --- | --- | --- |
+| id | int | - | - | Primary | Yes |
+| email | varchar | 255 | - | Unique | No |
+| username | varchar | 255 | - | Unique | No |
+| password | varchar | 255 | - | - | No |
+| firstname | varchar | 255 | - | - | No |
+| lastname | varchar | 255 | - | - | No |
+| phone | varchar | 10 | - | - | No |
+| address | varchar | 255 | - | - | No |
+| image | varchar | 255 | - | - | No |
+| restaurant_name | varchar | 255 | - | - | No |
+| restaurant_type | varchar | 255 | - | - | No |
+| status | varchar | 255 | รอการอนุมัติ | - | No |
 
 #
 
@@ -93,17 +93,17 @@
 ข้อมูลในตาราง rider ประกอบด้วย
 
 | Name | Type | Length | Null Index | Auto Increment |
-| --- | --- | --- | --- | --- |
-| id | int | - | Primary | Yes |
-| email | varchar | 255 | Unique | No |
-| username | varchar | 255 | Unique | No |
-| password | varchar | 255 | - | No |
-| firstname | varchar | 255 | - | No |
-| lastname | varchar | 255 | - | No |
-| phone | varchar | 10 | - | No |
-| address | varchar | 255 | - | No |
-| car_no | varchar | 255 | - | No |
-| image | varchar | 255 | - | No |
-| status | varchar | 255 | - | No |
+| --- | --- | --- | --- | --- | --- |
+| id | int | - | - | Primary | Yes |
+| email | varchar | 255 | - | Unique | No |
+| username | varchar | 255 | - | Unique | No |
+| password | varchar | 255 | - | - | No |
+| firstname | varchar | 255 | - | - | No |
+| lastname | varchar | 255 | - | - | No |
+| phone | varchar | 10 | - | - | No |
+| address | varchar | 255 | - | - | No |
+| car_no | varchar | 255 | - | - | No |
+| image | varchar | 255 | - | - | No |
+| status | varchar | 255 | - | รอการอนุมัติ | No |
 
 #
