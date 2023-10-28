@@ -19,7 +19,8 @@ if (isset($_POST["old_password"])) {
         echo "<script>alert('รหัสผ่านใหม่ไม่ตรงกัน')</script>";
     } else {
         $sql = "UPDATE customer SET password = '$new_password' WHERE id = '$id'";
-        if ($conn->query($sql) === TRUE) {
+        $result = $conn->query($sql);
+        if ($result === TRUE) {
             echo "
                 <script>
                     alert('เปลี่ยนรหัสผ่านสำเร็จ');

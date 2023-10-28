@@ -11,7 +11,11 @@ if (isset($_POST["name"])) {
     $sql = "SELECT * FROM food_category WHERE name = '$name'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        echo "<script>alert('หมวดหมู่อาหารนี้มีอยู่แล้ว')</script>";
+        echo "
+        <script>
+            alert('หมวดหมู่อาหารนี้มีอยู่แล้ว');
+            window.location = 'create_category.php';
+        </script>";
     } else {
         $sql = "INSERT INTO food_category (name, restaurant_id) VALUES ('$name', '$restaurant_id')";
         if ($conn->query($sql) === TRUE) {
@@ -24,6 +28,7 @@ if (isset($_POST["name"])) {
             exit;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
+            exit;
         }
     }
     $conn->close();
