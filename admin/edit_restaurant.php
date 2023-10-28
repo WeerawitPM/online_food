@@ -7,7 +7,8 @@ include("../db_connect.php");
 if (isset($_POST["normal"])) {
     $id = $_POST["normal"];
     $sql = "UPDATE restaurant SET status = 'อนุมัติ' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('เปลี่ยนสถานะเป็นอนุมัติสำเร็จ');
@@ -24,7 +25,8 @@ if (isset($_POST["normal"])) {
 if(isset($_POST["banned"])){
     $id = $_POST["banned"];
     $sql = "UPDATE restaurant SET status = 'ไม่อนุมัติ' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('เปลี่ยนสถานะเป็นไม่อนุมัติสำเร็จ');
@@ -41,7 +43,8 @@ if(isset($_POST["banned"])){
 if(isset($_POST["delete"])){
     $id = $_POST["delete"];
     $sql = "DELETE FROM restaurant WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('ลบสำเร็จ');
@@ -90,23 +93,36 @@ if(isset($_POST["delete"])){
                 $sql = "SELECT * FROM restaurant";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["username"] . "</td>";
-                    echo "<td>" . $row["firstname"] . "</td>";
-                    echo "<td>" . $row["lastname"] . "</td>";
-                    echo "<td>" . $row["phone"] . "</td>";
-                    echo "<td>" . $row["email"] . "</td>";
-                    echo "<td>" . $row["restaurant_name"] . "</td>";
-                    echo "<td>" . $row["restaurant_type"] . "</td>";
-                    echo "<td>" . $row["status"] . "</td>";
-                    echo "<td>";
-                    echo "<button type='submit' name='normal' value='" . $row["id"] . "'>อนุมัติ</button>";
-                    echo "<button type='submit' name='banned' value='" . $row["id"] . "'>ไม่อนุมัติ</button>";
-                    echo "<button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button>";
-                    echo "</td>";
-                    echo "</tr>";
+                    $id = $row["id"];
+                    $username = $row["username"];
+                    $firstname = $row["firstname"];
+                    $lastname = $row["lastname"];
+                    $phone = $row["phone"];
+                    $email = $row["email"];
+                    $restaurant_name = $row["restaurant_name"];
+                    $restaurant_type = $row["restaurant_type"];
+                    $status = $row["status"];
+
+                    echo "
+                    <tr>
+                        <td>$id</td>
+                        <td>$username</td>
+                        <td>$firstname</td>
+                        <td>$lastname</td>
+                        <td>$phone</td>
+                        <td>$email</td>
+                        <td>$restaurant_name</td>
+                        <td>$restaurant_type</td>
+                        <td>$status</td>
+                        <td>
+                            <button type='submit' name='normal' value='$id'>อนุมัติ</button>
+                            <button type='submit' name='banned' value='$id'>ไม่อนุมัติ</button>
+                            <button type='submit' name='delete' value='$id'>ลบ</button>
+                        </td>
+                    </tr>
+                    ";
                 }
+                $conn->close();
                 ?>
             </form>
         </tbody>

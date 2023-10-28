@@ -31,7 +31,7 @@ if (isset($_POST["name"])) {
 
 if (isset($_POST["delete"])) {
     $id = $_POST["delete"];
-    $sql = "DELETE FROM food_category WHERE id = '$id'";
+    $sql = "DELETE FROM food_category WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
         echo "
             <script>

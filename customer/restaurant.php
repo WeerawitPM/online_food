@@ -12,28 +12,30 @@ include("../db_connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>หน้าแรก</title>
+    <title>ร้านอาหาร</title>
 </head>
 
 <body>
     <?php include("navbar.php"); ?>
-    <br>
+    <h1>รายการอาหาร</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
         <?php
-        $sql = "SELECT * FROM restaurant";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
+        $restaurant_id = $_GET["id"];
+        $sql = "SELECT * FROM food WHERE restaurant_id = $restaurant_id";
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
             echo "
             <div class='card m-2' style='width: 18rem;'>
                 <img src='../restaurant/" . $row['image'] . "' class='card-img-top' alt='...' width='100px' >
                 <div class='card-body'>
-                    <h2 class='card-title'>" . $row['restaurant_name'] . "</h2>
-                    <p class='card-text'>" . $row['restaurant_type'] . "</p>
-                    <a href='restaurant.php?id=" . $row['id'] . "' class='btn btn-primary'>เข้าสู่ร้านค้า</a>
+                    <h2 class='card-title'>" . $row['name'] . "</h2>
+                    <p class='card-text'>" . $row['detail'] . "</p>
+                    <a class='btn btn-primary'>สั่งอาหาร</a>
                 </div>
             </div>
             ";
         }
+        $conn->close();
         ?>
     </div>
 </body>

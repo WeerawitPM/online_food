@@ -13,7 +13,8 @@ if (isset($_POST["name"])) {
         echo "<script>alert('ประเภทร้านอาหารนี้มีอยู่แล้ว')</script>";
     } else {
         $sql = "INSERT INTO restaurant_type (name) VALUES ('$name')";
-        if ($conn->query($sql) === TRUE) {
+        $result = $conn->query($sql);
+        if ($result === TRUE) {
             echo "
                 <script>
                     alert('เพิ่มประเภทร้านอาหารสำเร็จ');
@@ -25,12 +26,14 @@ if (isset($_POST["name"])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    $conn->close();
 }
 
 if (isset($_POST["delete"])) {
     $id = $_POST["delete"];
     $sql = "DELETE FROM restaurant_type WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('ลบประเภทร้านอาหารสำเร็จ');
@@ -41,6 +44,7 @@ if (isset($_POST["delete"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
 }
 
 ?>
@@ -76,10 +80,15 @@ if (isset($_POST["delete"])) {
                 $sql = "SELECT * FROM restaurant_type";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td><button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button></td>";
-                    echo "</tr>";
+                    $id = $row["id"];
+                    echo "
+                    <tr>
+                        <td>" . $row["name"] . "</td>
+                        <td>
+                            <button type='submit' name='delete' value='$id'>ลบ</button>
+                        </td>
+                    </tr>
+                    ";
                 }
                 $conn->close();
                 ?>

@@ -7,7 +7,8 @@ include("../db_connect.php");
 if (isset($_POST["normal"])) {
     $id = $_POST["normal"];
     $sql = "UPDATE customer SET status = 'ปกติ' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('เปลี่ยนสถานะเป็นปกติสำเร็จ');
@@ -21,10 +22,11 @@ if (isset($_POST["normal"])) {
     $conn->close();
 }
 
-if(isset($_POST["banned"])){
+if (isset($_POST["banned"])) {
     $id = $_POST["banned"];
     $sql = "UPDATE customer SET status = 'ระงับการใช้งาน' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('เปลี่ยนสถานะเป็นระงับการใช้งานสำเร็จ');
@@ -38,10 +40,11 @@ if(isset($_POST["banned"])){
     $conn->close();
 }
 
-if(isset($_POST["delete"])){
+if (isset($_POST["delete"])) {
     $id = $_POST["delete"];
     $sql = "DELETE FROM customer WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
         echo "
             <script>
                 alert('ลบสำเร็จ');
@@ -88,21 +91,32 @@ if(isset($_POST["delete"])){
                 $sql = "SELECT * FROM customer";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["username"] . "</td>";
-                    echo "<td>" . $row["firstname"] . "</td>";
-                    echo "<td>" . $row["lastname"] . "</td>";
-                    echo "<td>" . $row["phone"] . "</td>";
-                    echo "<td>" . $row["email"] . "</td>";
-                    echo "<td>" . $row["status"] . "</td>";
-                    echo "<td>";
-                    echo "<button type='submit' name='normal' value='" . $row["id"] . "'>ปกติ</button>";
-                    echo "<button type='submit' name='banned' value='" . $row["id"] . "'>ระงับ</button>";
-                    echo "<button type='submit' name='delete' value='" . $row["id"] . "'>ลบ</button>";
-                    echo "</td>";
-                    echo "</tr>";
+                    $id = $row["id"];
+                    $username = $row["username"];
+                    $firstname = $row["firstname"];
+                    $lastname = $row["lastname"];
+                    $phone = $row["phone"];
+                    $email = $row["email"];
+                    $status = $row["status"];
+                    
+                    echo "
+                    <tr>
+                        <td>$id</td>
+                        <td>$username</td>
+                        <td>$firstname</td>
+                        <td>$lastname</td>
+                        <td>$phone</td>
+                        <td>$email</td>
+                        <td>$status</td>
+                        <td>
+                            <button type='submit' name='normal' value='$id'>ปกติ</button>
+                            <button type='submit' name='banned' value='$id'>ระงับ</button>
+                            <button type='submit' name='delete' value='$id'>ลบ</button>
+                        </td>
+                    </tr>
+                    ";
                 }
+                $conn->close();
                 ?>
             </form>
         </tbody>

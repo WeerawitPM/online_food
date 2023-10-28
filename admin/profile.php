@@ -22,11 +22,22 @@ include("../db_connect.php");
     $sql = "SELECT * FROM admin WHERE id = '$id'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    echo "<p>Username: " . $row["username"] . "</p>";
-    echo "<p>ชื่อ: " . $row["firstname"] . "</p>";
-    echo "<p>นามสกุล: " . $row["lastname"] . "</p>";
-    echo "<p>เบอร์โทรศัพท์: " . $row["phone"] . "</p>";
-    echo "<p>อีเมล: " . $row["email"] . "</p>";
+    
+    $username = $row["username"];
+    $firstname = $row["firstname"];
+    $lastname = $row["lastname"];
+    $phone = $row["phone"];
+    $email = $row["email"];
+
+    echo "
+    <p>Username: $username</p>
+    <p>ชื่อ: $firstname</p>
+    <p>นามสกุล: $lastname</p>
+    <p>เบอร์โทรศัพท์: $phone</p>
+    <p>อีเมล: $email</p>
+    ";
+
+    $conn->close();
     ?>
     <a href="edit_profile.php"><button>แก้ไขข้อมูล</button></a>
     <a href="edit_password.php"><button>เปลี่ยนรหัสผ่าน</button></a>

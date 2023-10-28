@@ -92,7 +92,7 @@
 #### 8. สร้างตารางคนส่งอาหารชื่อ rider
 ข้อมูลในตาราง rider ประกอบด้วย
 
-| Name | Type | Length | Null Index | Auto Increment |
+| Name | Type | Length | Default | Null Index | Auto Increment |
 | --- | --- | --- | --- | --- | --- |
 | id | int | - | - | Primary | Yes |
 | email | varchar | 255 | - | Unique | No |
@@ -104,6 +104,6 @@
 | address | varchar | 255 | - | - | No |
 | car_no | varchar | 255 | - | - | No |
 | image | varchar | 255 | - | - | No |
-| status | varchar | 255 | - | รอการอนุมัติ | No |
+| status | varchar | 255 | รอการอนุมัติ | - | No |
 
 #

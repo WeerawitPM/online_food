@@ -3,6 +3,29 @@ session_start();
 include("check_login.php");
 include("check_type.php");
 include("../db_connect.php");
+
+//ดูรายการอาหาร
+$restaurant_id = $_SESSION["id"]; //ให้ restaurant_id เท่ากับ SESSION id
+$sql = "SELECT * FROM food WHERE restaurant_id = $restaurant_id";
+$result = $conn->query($sql);
+
+if (isset($_POST["delete"])) {
+    $id = $_POST["delete"];
+    $sql = "DELETE from food WHERE id = $id";
+    $result = $conn->query($sql);
+    if ($result === TRUE) {
+        echo "
+            <script>
+                alert('ลบรายการอาหารสำเร็จ');
+                window.location = 'home.php';
+            </script>'
+        ";
+        exit;
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +43,6 @@ include("../db_connect.php");
     <h1>รายการอาหาร</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
         <?php
-        $restaurant_id = $_SESSION["id"];
-        $sql = "SELECT * FROM food WHERE restaurant_id = '$restaurant_id'";
-        $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "
@@ -33,11 +53,15 @@ include("../db_connect.php");
                             <p class='card-text'>" . $row['detail'] . "</p>
                             <p class='card-text'>หมวดหมู่: " . $row['food_category'] . "</p>
                             <p class='card-text'>ราคา: " . $row['price'] . " บาท</p>
-                            <a href='edit_food.php?id=" . $row['id'] . "' class='btn btn-primary'>แก้ไข</a>
-                            <a href='delete_food.php?id=" . $row['id'] . "' class='btn btn-danger'>ลบ</a>
+                            <div class='d-flex'>
+                                <a href='edit_food.php?id=" . $row['id'] . "' class='btn btn-primary me-1'>แก้ไข</a>
+                                <form action='home.php' method='post'>
+                                    <button type='submit' name='delete' value=" . $row['id'] . " class='btn btn-danger'>ลบ</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    ";
+                ";
             }
         } else {
             echo "<h1>ยังไม่มีรายการอาหาร</h1>";
