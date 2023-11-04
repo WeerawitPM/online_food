@@ -11,7 +11,11 @@ if (isset($_POST["food_id"])) {
     $sql = "UPDATE food_order SET status = '$status' WHERE food_id ='$food_id'";
     $result = $conn->query($sql);
     if ($result === true) {
-        echo "<script>alert('เปลี่ยนสถานะของอาหารเสร็จสิ้น');</script>";
+        echo "
+        <script>
+            alert('เปลี่ยนสถานะของอาหารเสร็จสิ้น');
+            window.location.href='order_status.php';
+        </script>";
     }
 }
 ?>
@@ -74,10 +78,13 @@ if (isset($_POST["food_id"])) {
                 $food_id = $row["food_id"];
                 $count = $row["count"];
                 $total_price = $row["total_price"];
+
                 $sql = "SELECT * FROM food WHERE id = '$food_id'";
                 $result2 = $conn->query($sql);
                 $row2 = $result2->fetch_assoc();
                 $name = $row2["name"];
+                $image = $row2["image"];
+
                 echo "
                 <div class='card m-2' style='width: 18rem;'>
                     <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
@@ -104,10 +111,13 @@ if (isset($_POST["food_id"])) {
                 $food_id = $row["food_id"];
                 $count = $row["count"];
                 $total_price = $row["total_price"];
+
                 $sql = "SELECT * FROM food WHERE id = '$food_id'";
                 $result2 = $conn->query($sql);
                 $row2 = $result2->fetch_assoc();
                 $name = $row2["name"];
+                $image = $row2["image"];
+
                 echo "
                 <div class='card m-2' style='width: 18rem;'>
                     <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
@@ -134,10 +144,13 @@ if (isset($_POST["food_id"])) {
                 $food_id = $row["food_id"];
                 $count = $row["count"];
                 $total_price = $row["total_price"];
+
                 $sql = "SELECT * FROM food WHERE id = '$food_id'";
                 $result2 = $conn->query($sql);
                 $row2 = $result2->fetch_assoc();
                 $name = $row2["name"];
+                $image = $row2["image"];
+                
                 echo "
                 <div class='card m-2' style='width: 18rem;'>
                     <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
