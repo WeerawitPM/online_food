@@ -3,6 +3,29 @@ session_start();
 include("check_login.php");
 include("check_type.php");
 include("../db_connect.php");
+
+if (isset($_POST["count"])) {
+    $food_id = $_POST["food_id"];
+    $customer_id = $_SESSION["id"];
+    $count = $_POST["count"];
+
+    $sql = "SELECT * FROM food WHERE id = $food_id";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    $name = $row["name"];
+    $price = $row["price"];
+    $total_price = $price * $count;
+
+    $sql = "INSERT INTO food_order (food_id, count, total_price, customer_id) VALUES ('$food_id', '$count', '$total_price', '$customer_id')";
+    $result = $conn->query($sql);
+    if ($result) {
+        echo "<script>alert('สั่งอาหารสำเร็จ');</script>";
+    } else {
+        echo "<script>alert('สั่งอาหารไม่สำเร็จ')</script>";
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,18 +47,30 @@ include("../db_connect.php");
         $sql = "SELECT * FROM food WHERE restaurant_id = $restaurant_id";
         $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $image = $row['image'];
+            $name = $row['name'];
+            $detail = $row['detail'];
+            $price = $row['price'];
             echo "
             <div class='card m-2' style='width: 18rem;'>
-                <img src='../restaurant/" . $row['image'] . "' class='card-img-top' alt='...' width='100px' >
+                <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
                 <div class='card-body'>
-                    <h2 class='card-title'>" . $row['name'] . "</h2>
-                    <p class='card-text'>" . $row['detail'] . "</p>
-                    <a class='btn btn-primary'>สั่งอาหาร</a>
+                    <h2 class='card-title'>$name</h2>
+                    <p class='card-text'>$detail</p>
+                    <h3 class='card-text'>฿ $price</h3>
                 </div>
+                <center>
+                    <div class='card-footer'>
+                        <form action='' method='post'>
+                            <input type='number' value='0' name='count'>
+                            <button class='btn btn-primary mt-1' type='submit' value='$id' name='food_id'>สั่งอาหาร</button>
+                        </form>
+                    </div>
+                </center>
             </div>
             ";
         }
-        $conn->close();
         ?>
     </div>
 </body>

@@ -19,7 +19,6 @@ if (isset($_POST["normal"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $conn->close();
 }
 
 if (isset($_POST["banned"])) {
@@ -37,7 +36,6 @@ if (isset($_POST["banned"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $conn->close();
 }
 
 if (isset($_POST["delete"])) {
@@ -55,7 +53,6 @@ if (isset($_POST["delete"])) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $conn->close();
 }
 
 ?>
