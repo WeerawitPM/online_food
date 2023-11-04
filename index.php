@@ -27,13 +27,13 @@ if (isset($_SESSION["id"])) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
-<body>
-    <div>
+<body class="bg-dark" data-bs-theme="dark">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
         <h1>ยินดีต้อนรับสู่ Online Food Delivery !</h1>
-        <a href="customer/login.php">เข้าสู่ระบบลูกค้า</a><br>
-        <a href="restaurant/login.php">เข้าสู่ระบบร้านอาหาร</a><br>
-        <a href="rider/login.php">เข้าสู่ระบบผู้ส่งอาหาร</a><br>
-        <a href="admin/login.php">เข้าสู่ระบบผู้ดูแลระบบ</a>
+        <a href="customer/login.php" class="btn btn-primary btn-lg mt-3">เข้าสู่ระบบลูกค้า</a><br>
+        <a href="restaurant/login.php" class="btn btn-success btn-lg">เข้าสู่ระบบร้านอาหาร</a><br>
+        <a href="rider/login.php" class="btn btn-warning btn-lg">เข้าสู่ระบบผู้ส่งอาหาร</a><br>
+        <a href="admin/login.php" class="btn btn-danger btn-lg">เข้าสู่ระบบผู้ดูแลระบบ</a>
     </div>
 </body>
 

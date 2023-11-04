@@ -153,9 +153,6 @@ if (isset($_POST["food_id"])) {
                     </div>
                     ";
                     break;
-                default:
-                    #####
-                    break;
             }
         }
         $conn->close();
