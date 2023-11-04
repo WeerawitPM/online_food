@@ -108,13 +108,13 @@
 
 #
 
-#### 9. สร้างตารางรายการสั่งอาหารชื่อ recipe
-ข้อมูลในตาราง recipe ประกอบด้วย
+#### 9. สร้างตารางรายการสั่งอาหารชื่อ food_order
+ข้อมูลในตาราง food_order ประกอบด้วย
 
 | Name | Type | Length | Default | Null Index | Auto Increment |
 | --- | --- | --- | --- | --- | --- |
 | id | int | - | - | Primary | Yes |
-| food_name | varchar | 255 | - | - | No |
+| food_id | varchar | 255 | - | - | No |
 | food_count | int | 4 | - | - | No |
 | price | int | 5 | - | - | No |
 | customer_id | int | 5 | - | - | No |

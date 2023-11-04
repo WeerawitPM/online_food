@@ -52,6 +52,7 @@ include("../db_connect.php");
             } else {
                 echo "<h2>ไม่มีประวัติคำสั่งซื้อ</h2>";
             }
+            $conn->close();
             ?>
         </tbody>
     </table>
