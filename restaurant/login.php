@@ -43,7 +43,7 @@ if (isset($_POST["username"])) {
     <title>เข้าสู่ระบบ | ร้านอาหาร</title>
 </head>
 
-<body class="bg-dark w-100" data-bs-theme="dark">
+<body data-bs-theme="dark">
     <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100vh;">
         <h1>เข้าสู่ระบบร้านอาหาร</h1>
         <form action="login.php" method="post" class="d-flex flex-column mt-3 w-75">
