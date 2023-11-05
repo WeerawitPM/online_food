@@ -47,8 +47,8 @@ if (isset($_POST["food_id"])) {
                     $count = $row["count"];
                     $total_price = $row["total_price"];
 
-                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
-                    $result2 = $conn->query($sql);
+                    $sql2 = "SELECT * FROM food WHERE id = '$food_id'";
+                    $result2 = $conn->query($sql2);
                     $row2 = $result2->fetch_assoc();
                     $name = $row2["name"];
                     $image = $row2["image"];
@@ -79,8 +79,8 @@ if (isset($_POST["food_id"])) {
                     $count = $row["count"];
                     $total_price = $row["total_price"];
 
-                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
-                    $result2 = $conn->query($sql);
+                    $sql2 = "SELECT * FROM food WHERE id = '$food_id'";
+                    $result2 = $conn->query($sql2);
                     $row2 = $result2->fetch_assoc();
                     $name = $row2["name"];
                     $image = $row2["image"];

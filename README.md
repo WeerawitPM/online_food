@@ -105,6 +105,7 @@
 | car_no | varchar | 255 | Unique | - | No |
 | image | varchar | 255 | - | - | No |
 | status | varchar | 255 | รอการอนุมัติ | - | No |
+| status_order | varchar | 255 | รอรับออเดอร์ | - | No |
 
 #
 
@@ -117,9 +118,9 @@
 | food_id | varchar | 255 | - | - | No |
 | food_count | int | 4 | - | - | No |
 | price | int | 5 | - | - | No |
-| customer_id | int | 5 | - | - | No |
-| restaurant_id | int | 5 | - | - | No |
-| rider_id | int | 5 | - | - | No |
+| customer_id | int | 11 | - | - | No |
+| restaurant_id | int | 11 | - | - | No |
+| rider_id | int | 11 | - | - | No |
 | status | varchar | 255 | รอการอนุมัติ | - | No |
 
 #
