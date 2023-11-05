@@ -15,7 +15,7 @@ include("../db_connect.php");
     <title>หน้าแรก</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <br>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
@@ -40,6 +40,7 @@ include("../db_connect.php");
         }
         ?>
     </div>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

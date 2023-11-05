@@ -30,99 +30,18 @@ if (isset($_POST["food_id"])) {
     <title>สถานะคำสั่งซื้อ</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <h1>รายการอาหารที่สั่ง</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
         <?php
         $customer_id = $_SESSION["id"];
-
         $sql = "SELECT * FROM food_order WHERE customer_id = '$customer_id'";
         $result = $conn->query($sql);
+        
         while ($row = $result->fetch_assoc()) {
             $status = $row["status"];
             switch ($status) {
-                case "รอคนขับ":
-                    $food_id = $row["food_id"];
-                    $count = $row["count"];
-                    $total_price = $row["total_price"];
-
-                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
-                    $result2 = $conn->query($sql);
-                    $row2 = $result2->fetch_assoc();
-                    $name = $row2["name"];
-                    $image = $row2["image"];
-
-                    echo "
-                    <div class='card m-2' style='width: 18rem;'>
-                        <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
-                        <div class='card-body'>
-                            <h2 class='card-title'>$name</h2>
-                            <p class='card-text'>จำนวน : $count</p>
-                            <h3 class='card-text'>฿ $total_price</h3>
-                        </div>
-                        <center>
-                            <div class='card-footer'>
-                                สถานะ: $status
-                            </div>
-                        </center>
-                    </div>
-                    ";
-                    break;
-                case "รอร้านค้าทำอาหาร":
-                    $food_id = $row["food_id"];
-                    $count = $row["count"];
-                    $total_price = $row["total_price"];
-
-                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
-                    $result2 = $conn->query($sql);
-                    $row2 = $result2->fetch_assoc();
-                    $name = $row2["name"];
-                    $image = $row2["image"];
-
-                    echo "
-                    <div class='card m-2' style='width: 18rem;'>
-                        <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
-                        <div class='card-body'>
-                            <h2 class='card-title'>$name</h2>
-                            <p class='card-text'>จำนวน : $count</p>
-                            <h3 class='card-text'>฿ $total_price</h3>
-                        </div>
-                        <center>
-                            <div class='card-footer'>
-                                สถานะ: $status
-                            </div>
-                        </center>
-                    </div>
-                    ";
-                    break;
-                case "กำลังส่ง":
-                    $food_id = $row["food_id"];
-                    $count = $row["count"];
-                    $total_price = $row["total_price"];
-
-                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
-                    $result2 = $conn->query($sql);
-                    $row2 = $result2->fetch_assoc();
-                    $name = $row2["name"];
-                    $image = $row2["image"];
-
-                    echo "
-                    <div class='card m-2' style='width: 18rem;'>
-                        <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
-                        <div class='card-body'>
-                            <h2 class='card-title'>$name</h2>
-                            <p class='card-text'>จำนวน : $count</p>
-                            <h3 class='card-text'>฿ $total_price</h3>
-                        </div>
-                        <center>
-                            <div class='card-footer'>
-                                สถานะ: $status
-                            </div>
-                        </center>
-                    </div>
-                    ";
-                    break;
                 case "ส่งอาหารแล้ว":
                     $food_id = $row["food_id"];
                     $count = $row["count"];
@@ -153,11 +72,41 @@ if (isset($_POST["food_id"])) {
                     </div>
                     ";
                     break;
+                case "เสร็จสิ้น":
+                    break;
+                default:
+                    $food_id = $row["food_id"];
+                    $count = $row["count"];
+                    $total_price = $row["total_price"];
+
+                    $sql = "SELECT * FROM food WHERE id = '$food_id'";
+                    $result2 = $conn->query($sql);
+                    $row2 = $result2->fetch_assoc();
+                    $name = $row2["name"];
+                    $image = $row2["image"];
+
+                    echo "
+                    <div class='card m-2' style='width: 18rem;'>
+                        <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
+                        <div class='card-body'>
+                            <h2 class='card-title'>$name</h2>
+                            <p class='card-text'>จำนวน : $count</p>
+                            <h3 class='card-text'>฿ $total_price</h3>
+                        </div>
+                        <center>
+                            <div class='card-footer'>
+                                สถานะ: $status
+                            </div>
+                        </center>
+                    </div>
+                    ";
+                    break;
             }
         }
         $conn->close();
         ?>
     </div>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

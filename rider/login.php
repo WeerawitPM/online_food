@@ -1,7 +1,7 @@
 <?php
 session_start();
 //ตรวจสอบว่ามีการเข้าสู่ระบบแล้วหรือไม่ ถ้ามีให้กลับไปหน้า home ของแต่ละประเภท
-if(isset($_SESSION["id"])){
+if (isset($_SESSION["id"])) {
     header('Location: home.php');
     exit;
 }
@@ -55,7 +55,8 @@ if (isset($_POST["username"])) {
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control form-control-lg" name="password" id="password">
+                <input type="password" class="form-control form-control-lg" name="password" id="password"
+                    placeholder="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>

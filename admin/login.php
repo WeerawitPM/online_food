@@ -55,7 +55,8 @@ if (isset($_POST["username"])) {
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control form-control-lg" name="password" id="password">
+                <input type="password" class="form-control form-control-lg" name="password" id="password"
+                    placeholder="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>

@@ -44,7 +44,7 @@ if (isset($_POST["username"])) {
     <title>เข้าสู่ระบบ | ลูกค้า</title>
 </head>
 
-<body class="bg-dark w-100" data-bs-theme="dark">
+<body data-bs-theme="dark">
     <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100vh;">
         <h1>เข้าสู่ระบบลูกค้า</h1>
         <form action="login.php" method="post" class="d-flex flex-column mt-3 w-75">
@@ -55,7 +55,8 @@ if (isset($_POST["username"])) {
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control form-control-lg" name="password" id="password">
+                <input type="password" class="form-control form-control-lg" name="password" id="password"
+                    placeholder="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
