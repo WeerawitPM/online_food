@@ -121,6 +121,6 @@
 | customer_id | int | 11 | - | - | No |
 | restaurant_id | int | 11 | - | - | No |
 | rider_id | int | 11 | - | - | No |
-| status | varchar | 255 | รอการอนุมัติ | - | No |
+| status | varchar | 255 | รอคนขับ | - | No |
 
 #
