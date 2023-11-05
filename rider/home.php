@@ -32,7 +32,7 @@ if(isset($_POST["food_id"])){
     <title>หน้าแรก</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <h1>รายการอาหารที่สั่งของลูกค้า</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">

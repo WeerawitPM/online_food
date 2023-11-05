@@ -27,7 +27,7 @@ if (isset($_POST["food_order_id"])) {
     <title>สถานะการส่งอาหาร</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <h1>สถานะการส่งอาหาร</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">

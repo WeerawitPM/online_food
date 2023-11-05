@@ -72,10 +72,11 @@ if (isset($_POST["firstname"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>แก้ไขข้อมูลส่วนตัว</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <h1>แก้ไขข้อมูลส่วนตัว</h1>
     <form action="edit_profile.php" enctype="multipart/form-data" method="post">

@@ -41,10 +41,11 @@ if (isset($_POST["old_password"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>เปลี่ยนรหัสผ่าน</title>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <?php include("navbar.php"); ?>
     <h1>เปลี่ยนรหัสผ่าน</h1>
     <form action="" method="post">
