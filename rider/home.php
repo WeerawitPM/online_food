@@ -3,6 +3,23 @@ session_start();
 include("check_login.php");
 include("check_type.php");
 include("../db_connect.php");
+
+if(isset($_POST["food_id"])){
+    $food_order_id = $_POST["food_id"];
+    $rider_id = $_SESSION["id"];
+
+    $sql = "UPDATE food_order SET status = 'ไรเดอร์กำลังไปรอรับอาหารจากร้านค้า', rider_id = '$rider_id' WHERE id = '$food_order_id'";
+    $result = $conn->query($sql);
+
+    $sql = "UPDATE rider SET status_order = 'รับออเดอร์' WHERE id = '$rider_id'";
+    $result = $conn->query($sql);
+
+    echo "
+    <script>
+        alert('รับออเดอร์เรียบร้อยแล้ว');
+        window.location = 'order_status.php';
+    </script>";
+}
 ?>
 
 <!DOCTYPE html>

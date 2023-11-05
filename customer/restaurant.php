@@ -14,10 +14,11 @@ if (isset($_POST["count"])) {
     $row = $result->fetch_assoc();
 
     $name = $row["name"];
+    $restaurant_id = $row["restaurant_id"];
     $price = $row["price"];
     $total_price = $price * $count;
 
-    $sql = "INSERT INTO food_order (food_id, count, total_price, customer_id) VALUES ('$food_id', '$count', '$total_price', '$customer_id')";
+    $sql = "INSERT INTO food_order (food_id, count, total_price, customer_id, restaurant_id) VALUES ('$food_id', '$count', '$total_price', '$customer_id', '$restaurant_id')";
     $result = $conn->query($sql);
     if ($result) {
         echo "<script>alert('สั่งอาหารสำเร็จ');</script>";
