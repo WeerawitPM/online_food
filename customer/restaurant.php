@@ -7,7 +7,7 @@ include("../db_connect.php");
 if (isset($_POST["count"])) {
     $food_id = $_POST["food_id"];
     $customer_id = $_SESSION["id"];
-    $count = $_POST["count"];
+    $food_count = $_POST["count"];
 
     $sql = "SELECT * FROM food WHERE id = $food_id";
     $result = $conn->query($sql);
@@ -16,9 +16,9 @@ if (isset($_POST["count"])) {
     $name = $row["name"];
     $restaurant_id = $row["restaurant_id"];
     $price = $row["price"];
-    $total_price = $price * $count;
+    $total_price = $price * $food_count;
 
-    $sql = "INSERT INTO food_order (food_id, count, total_price, customer_id, restaurant_id) VALUES ('$food_id', '$count', '$total_price', '$customer_id', '$restaurant_id')";
+    $sql = "INSERT INTO food_order (food_id, food_count, total_price, customer_id, restaurant_id) VALUES ('$food_id', '$food_count', '$total_price', '$customer_id', '$restaurant_id')";
     $result = $conn->query($sql);
     if ($result) {
         echo "<script>alert('สั่งอาหารสำเร็จ');</script>";

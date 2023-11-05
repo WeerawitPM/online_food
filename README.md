@@ -115,9 +115,9 @@
 | Name | Type | Length | Default | Null Index | Auto Increment |
 | --- | --- | --- | --- | --- | --- |
 | id | int | - | - | Primary | Yes |
-| food_id | varchar | 255 | - | - | No |
-| food_count | int | 4 | - | - | No |
-| price | int | 5 | - | - | No |
+| food_id | int | 11 | - | - | No |
+| food_count | int | 11 | - | - | No |
+| total_price | int | 11 | - | - | No |
 | customer_id | int | 11 | - | - | No |
 | restaurant_id | int | 11 | - | - | No |
 | rider_id | int | 11 | - | - | No |

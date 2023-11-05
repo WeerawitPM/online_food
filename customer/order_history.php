@@ -35,7 +35,7 @@ include("../db_connect.php");
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $food_id = $row["food_id"];
-                    $count = $row["count"];
+                    $food_count = $row["food_count"];
                     $total_price = $row["total_price"];
 
                     $sql = "SELECT * FROM food WHERE id = '$food_id'";
@@ -46,7 +46,7 @@ include("../db_connect.php");
 
                     echo "<tr>";
                     echo "<td>$name</td>";
-                    echo "<td>$count</td>";
+                    echo "<td>$food_count</td>";
                     echo "<td>$total_price</td>";
                     echo "</tr>";
                 }

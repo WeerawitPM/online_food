@@ -53,7 +53,7 @@ if(isset($_POST["food_id"])){
                 while ($row = $result->fetch_assoc()) {
                     $id = $row["id"];
                     $food_id = $row["food_id"];
-                    $count = $row["count"];
+                    $food_count = $row["food_count"];
                     $total_price = $row["total_price"];
                     ///////////////////////////////////////////
                     $sql2 = "SELECT * FROM food WHERE id = '$food_id'";
@@ -74,7 +74,7 @@ if(isset($_POST["food_id"])){
                             <h2 class='card-title'>ชื่อร้าน : $restaurant_name</h2>
                             <p class='card-text'>ที่อยู่ : $restaurant_address</p>
                             <p class='card-text'>อาหาร : $food_name</p>
-                            <p class='card-text'>จำนวน : $count</p>
+                            <p class='card-text'>จำนวน : $food_count</p>
                             <p class='card-text'>ราคา : $total_price บาท</p>
                         </div>
                         <center>
