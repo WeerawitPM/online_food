@@ -1,6 +1,6 @@
 <?php
-session_start();
 //ตรวจสอบว่ามีการเข้าสู่ระบบแล้วหรือไม่ ถ้ามีให้กลับไปหน้า home ของแต่ละประเภท
+session_start();
 if (isset($_SESSION['id'])) {
     header('Location: home.php');
     exit;
@@ -66,53 +66,64 @@ if (isset($_POST['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>สมัครสมาชิก</title>
+    <title>Register | Customer</title>
 </head>
 
 <body data-bs-theme="dark">
-    <div>
-        <h1>สมัครสมาชิก</h1>
-        <form action="register.php" method="post" enctype="multipart/form-data">
-            <p>
-                <label for="email">อีเมล</label>
-                <input type="email" name="email" id="email" required>
-            </p>
-            <p>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" required>
-            </p>
-            <p>
-                <label for="password">รหัสผ่าน</label>
-                <input type="password" name="password" id="password" required>
-            </p>
-            <p>
-                <label for="password2">ยืนยันรหัสผ่าน</label>
-                <input type="password" name="password2" id="password2" required>
-            </p>
-            <p>
-                <label for="firstname">ชื่อ</label>
-                <input type="text" name="firstname" id="firstname" required>
-            </p>
-            <p>
-                <label for="lastname">นามสกุล</label>
-                <input type="text" name="lastname" id="lastname" required>
-            </p>
-            <p>
-                <label for="phone">เบอร์โทร</label>
-                <input type="text" name="phone" id="phone" required>
-            </p>
-            <p>
-                <label for="address">ที่อยู่</label>
-                <textarea name="address" id="address" cols="30" rows="10" required></textarea>
-            </p>
-            <p>
-                <label for="image">รูปภาพ</label>
-                <input type="file" name="image" id="image" required>
-            </p>
-            <button type="submit">Register</button>
-        </form>
-        <br>
-        <a href="login.php">เข้าสู่ระบบ</a>
+    <div class="d-flex flex-column justify-content-center align-items-center m-5">
+        <div class="card" style="min-width: 60%;">
+            <div class="card-header text-center">
+                <h1>Register | Customer</h1>
+            </div>
+            <div class="card-body">
+                <form action="register.php" method="post" enctype="multipart/form-data" class="d-flex flex-column">
+                    <div class="mb-3 fs-5">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3 fs-5">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                    </div>
+                    <div class="mb-3 fs-5">
+                        <label for="password2" class="form-label">Confirm Password</label>
+                        <input type="password" name="password2" id="password2" class="form-control" required>
+                    </div>
+                    <div class="mb-3 fs-5 d-flex">
+                        <div class="w-100 me-1">
+                            <label for="firstname" class="form-label">Firstname</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control" required>
+                        </div>
+                        <div class="w-100 ms-1">
+                            <label for="lastname" class="form-label">Lastname</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 fs-5 d-flex">
+                        <div class="w-100 ms-1">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="w-100 ms-1">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" name="phone" id="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 fs-5">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea name="address" id="address" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3 fs-5">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" name="image" id="image" class="form-control" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                You have an Account? <a href="login.php">Login Here</a>
+            </div>
+        </div>
     </div>
 </body>
 

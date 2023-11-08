@@ -1,9 +1,4 @@
 <?php
-session_start();
-include("check_login.php");
-include("check_type.php");
-include("../db_connect.php");
-
 if (isset($_POST["old_password"])) {
     $id = $_SESSION["id"];
     $old_password = md5($_POST["old_password"]);

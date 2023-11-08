@@ -1,9 +1,4 @@
 <?php
-session_start();
-include("check_login.php");
-include("check_type.php");
-include("../db_connect.php");
-
 if (isset($_POST["count"])) {
     $food_id = $_POST["food_id"];
     $customer_id = $_SESSION["id"];

@@ -1,9 +1,4 @@
 <?php
-session_start();
-include("check_login.php");
-include("check_type.php");
-include("../db_connect.php");
-
 if (isset($_POST["food_order_id"])) {
     $food_order_id = $_POST["food_order_id"];
     $rider_id = $_POST["rider_id"];

@@ -1,10 +1,3 @@
-<?php
-session_start();
-include("check_login.php");
-include("check_type.php");
-include("../db_connect.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +33,7 @@ include("../db_connect.php");
         }
         ?>
     </div>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
