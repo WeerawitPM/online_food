@@ -35,13 +35,33 @@ if (isset($_POST["old_password"])) {
 ?>
 
 <body data-bs-theme="dark">
-    <h1>เปลี่ยนรหัสผ่าน</h1>
-    <form action="" method="post">
-        <p>รหัสผ่านเดิม: <input type="password" name="old_password" required></p>
-        <p>รหัสผ่านใหม่: <input type="password" name="new_password" required></p>
-        <p>ยืนยันรหัสผ่านใหม่: <input type="password" name="confirm_password" required></p>
-        <button type="submit">บันทึก</button>
-    </form>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card fs-5">
+            <div class="card-header text-center">
+                <h1 class="mx-5">Change Password</h1>
+            </div>
+            <form action="" method="post">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Old Password</label>
+                        <input type="password" name="old_password" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">New Password</label>
+                        <input type="password" name="new_password" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-success">Save</button>
+                    <a href="profile.php" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -92,13 +92,13 @@ if (isset($_POST["firstname"])) {
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone</label>
-                        <input type="text" name="phone" id="phone" value="<?= $phone; ?>"
+                        <input type="text" name="phone" id="phone" value="<?= $phone ?>"
                             class="form-control form-control-lg" required>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" name="address" id="address" value="<?= $address; ?>"
-                            class="form-control form-control-lg" required>
+                        <textarea type="text" name="address" id="address" class="form-control form-control-lg"
+                            required><?= $address ?></textarea>
                     </div>
                 </div>
                 <div class="card-footer text-center">

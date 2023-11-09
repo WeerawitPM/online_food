@@ -29,11 +29,17 @@ if (isset($_SESSION["id"])) {
 
 <body class="bg-dark" data-bs-theme="dark">
     <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
-        <h1>Welcome to Online Food Delivery !</h1>
-        <a href="customer/login.php" class="btn btn-primary btn-lg mt-3">เข้าสู่ระบบลูกค้า</a><br>
-        <a href="restaurant/login.php" class="btn btn-success btn-lg">เข้าสู่ระบบร้านอาหาร</a><br>
-        <a href="rider/login.php" class="btn btn-warning btn-lg">เข้าสู่ระบบผู้ส่งอาหาร</a><br>
-        <a href="admin/login.php" class="btn btn-danger btn-lg">เข้าสู่ระบบผู้ดูแลระบบ</a>
+        <div class="card text-center">
+            <div class="card-header">
+                <h1 class="mx-5">Welcome to Online Food Delivery !</h1>
+            </div>
+            <div class="card-body">
+                <a href="customer/login.php" class="btn btn-primary btn-lg my-2 w-50">Login to Customer</a><br>
+                <a href="restaurant/login.php" class="btn btn-success btn-lg my-2 w-50">Login to Restaurant</a><br>
+                <a href="rider/login.php" class="btn btn-warning btn-lg my-2 w-50">Login to Rider</a><br>
+                <a href="admin/login.php" class="btn btn-danger btn-lg my-2 w-50">Login to Admin</a>
+            </div>
+        </div>
     </div>
 </body>
 

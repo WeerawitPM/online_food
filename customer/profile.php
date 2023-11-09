@@ -30,7 +30,7 @@ $address = $row["address"];
                 <div>Firstname :
                     <?= $firstname ?>
                 </div>
-                <div>lastname :
+                <div>Lastname :
                     <?= $lastname ?>
                 </div>
                 <div>Email :
