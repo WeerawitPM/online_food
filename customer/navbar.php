@@ -1,10 +1,3 @@
-<!-- <nav>
-    <a href="home.php">หน้าแรก</a>
-    <a href="order_status.php">สถานะคำสั่งซื้อ</a>
-    <a href="order_history.php">ประวัติคำสั่งซื้อ</a>
-    <a href="profile.php">ข้อมูลส่วนตัว</a>
-    <a href="../logout.php">ออกจากระบบ</a>
-</nav> -->
 <?php
 session_start();
 include("check_login.php");
@@ -14,6 +7,18 @@ include("../db_connect.php");
 $username = $_SESSION["username"];
 $img = $_SESSION["image"];
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>
+        <?= $title ?>
+    </title>
+</head>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -34,21 +39,22 @@ $img = $_SESSION["image"];
                     <a class="nav-link" href="order_history.php">ประวัติคำสั่งซื้อ</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <?php echo $username ?>
-                        <img src="<?php echo $img ?>" width="40" height="40" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg-end">
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="../logout.php">Sign out</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="btn-group">
+                <span class="m-auto me-2">
+                    <?= $username ?>
+                </span>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="<?= $img ?>" width="40" height="40" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="../logout.php">Sign out</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

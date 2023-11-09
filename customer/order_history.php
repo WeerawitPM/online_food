@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>ประวัติคำสั่งซื้อ</title>
-</head>
+<?php
+$title="ประวัติคำสั่งซื้อ";
+include("navbar.php");
+?>
 
 <body data-bs-theme="dark">
-    <?php include("navbar.php"); ?>
     <h1>ประวัติคำสั่งซื้อ</h1>
     <table border="1">
         <thead>
@@ -50,7 +44,7 @@
             ?>
         </tbody>
     </table>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

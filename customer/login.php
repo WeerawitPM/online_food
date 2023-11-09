@@ -64,7 +64,7 @@ if (isset($_POST["username"])) {
                         <input type="password" class="form-control form-control-lg" name="password" id="password"
                             placeholder="password">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                    <button type="submit" class="btn btn-primary btn-lg bg-primary-subtle">Login</button>
                 </form>
             </div>
             <div class="card-footer text-center">
@@ -72,6 +72,7 @@ if (isset($_POST["username"])) {
             </div>
         </div>
     </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

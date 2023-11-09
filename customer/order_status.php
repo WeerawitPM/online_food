@@ -1,4 +1,7 @@
 <?php
+$title="สถานะคำสั่งซื้อ";
+include("navbar.php");
+
 if (isset($_POST["food_order_id"])) {
     $food_order_id = $_POST["food_order_id"];
     $rider_id = $_POST["rider_id"];
@@ -21,18 +24,7 @@ if (isset($_POST["food_order_id"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>สถานะคำสั่งซื้อ</title>
-</head>
-
 <body data-bs-theme="dark">
-    <?php include("navbar.php"); ?>
     <h1>รายการอาหารที่สั่ง</h1>
     <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
         <?php
@@ -149,7 +141,7 @@ if (isset($_POST["food_order_id"])) {
         $conn->close();
         ?>
     </div>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

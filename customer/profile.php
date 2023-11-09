@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>ข้อมูลส่วนตัว</title>
-</head>
+<?php
+$title="ข้อมูลส่วนตัว";
+include("navbar.php");
+?>
 
 <body data-bs-theme="dark">
-    <?php include("navbar.php"); ?>
     <h1>ข้อมูลส่วนตัว</h1>
     <?php
     $id = $_SESSION["id"];
@@ -26,7 +20,7 @@
     ?>
     <a href="edit_profile.php"><button>แก้ไขข้อมูล</button></a>
     <a href="edit_password.php"><button>เปลี่ยนรหัสผ่าน</button></a>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

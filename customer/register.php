@@ -106,7 +106,7 @@ if (isset($_POST['username'])) {
                         </div>
                         <div class="w-100 ms-1">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="text" name="phone" id="phone" class="form-control" required>
+                            <input type="number" name="phone" id="phone" class="form-control" required>
                         </div>
                     </div>
                     <div class="mb-3 fs-5">
@@ -117,7 +117,7 @@ if (isset($_POST['username'])) {
                         <label for="image" class="form-label">Image</label>
                         <input type="file" name="image" id="image" class="form-control" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg bg-primary-subtle">Register</button>
                 </form>
             </div>
             <div class="card-footer text-center">
@@ -125,6 +125,7 @@ if (isset($_POST['username'])) {
             </div>
         </div>
     </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

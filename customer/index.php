@@ -1,32 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "หน้าแรก";
+include("navbar.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>หน้าแรก</title>
-</head>
+$sql = "SELECT * FROM restaurant";
+$result = $conn->query($sql);
+
+if (isset($_POST["restaurant_name"])) {
+    $restaurant_name = $_POST["restaurant_name"];
+    $sql = "SELECT * FROM restaurant WHERE restaurant_name LIKE '%$restaurant_name%'";
+    $result = $conn->query($sql);
+}
+?>
 
 <body data-bs-theme="dark">
-    <?php include("navbar.php"); ?>
-    <br>
-    <div class="d-flex flex-row justify-content-center align-items-start flex-wrap">
+    <div class="d-flex justify-content-center flex-wrap">
+        <form class="input-group mt-3 mb-3 container" action="" method="post">
+            <input type="text" class="form-control" placeholder="Search Restaurant" name="restaurant_name">
+            <button type="submit" class="btn btn-primary bg-primary-subtle text-primary-emphasis">Search</button>
+        </form>
         <?php
-        $sql = "SELECT * FROM restaurant";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = $result->fetch_assoc()) {
             $image = $row['image'];
             $restaurant_name = $row['restaurant_name'];
             $restaurant_type = $row['restaurant_type'];
+            $restaurant_address = $row['address'];
             $id = $row['id'];
             echo "
-            <div class='card m-2' style='width: 18rem;'>
-                <img src='../restaurant/$image' class='card-img-top' alt='...' width='100px' >
-                <div class='card-body'>
+            <div class='card m-2' style='min-width:25vw;'>
+                <img src='../restaurant/$image' class='card-img-top' alt='...' style='max-height: 250px;'>
+                <div class='card-body position-relative'>
+                    <span class='bg-warning badge rounded-pill position-absolute translate-middle-y top-0 fs-6'>
+                        $restaurant_type
+                    </span>
                     <h2 class='card-title'>$restaurant_name</h2>
-                    <p class='card-text'>$restaurant_type</p>
-                    <a href='restaurant.php?id=$id' class='btn btn-primary'>เข้าสู่ร้านค้า</a>
+                    <p class='card-subtitle'>$restaurant_address</p>
+                    <div class='btn-group float-end'>
+                        <a href='restaurant.php?id=$id' class='btn btn-primary bg-primary-subtle text-primary-emphasis'>View</a>
+                        <a class='btn btn-warning bg-warning-subtle text-warning-emphasis'>Review</a>
+                    </div>
                 </div>
             </div>
             ";

@@ -1,4 +1,7 @@
 <?php
+$title = "เปลี่ยนรหัสผ่าน";
+include("navbar.php");
+
 if (isset($_POST["old_password"])) {
     $id = $_SESSION["id"];
     $old_password = md5($_POST["old_password"]);
@@ -31,18 +34,7 @@ if (isset($_POST["old_password"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>เปลี่ยนรหัสผ่าน</title>
-</head>
-
 <body data-bs-theme="dark">
-    <?php include("navbar.php"); ?>
     <h1>เปลี่ยนรหัสผ่าน</h1>
     <form action="" method="post">
         <p>รหัสผ่านเดิม: <input type="password" name="old_password" required></p>
@@ -50,6 +42,7 @@ if (isset($_POST["old_password"])) {
         <p>ยืนยันรหัสผ่านใหม่: <input type="password" name="confirm_password" required></p>
         <button type="submit">บันทึก</button>
     </form>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
