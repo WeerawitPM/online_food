@@ -31,6 +31,7 @@ if (isset($_POST["firstname"])) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) { //อัปโหลดไฟล์รูป
             $sql = "UPDATE customer SET firstname = '$firstname', lastname = '$lastname', phone = '$phone', address = '$address', image = '$image' WHERE id = '$id'";
             if ($conn->query($sql) === TRUE) {
+                $_SESSION["image"] = $image;
                 echo "
                     <script>
                         alert('แก้ไขข้อมูลสำเร็จ');
@@ -63,40 +64,50 @@ if (isset($_POST["firstname"])) {
 ?>
 
 <body data-bs-theme="dark">
-    <h1>แก้ไขข้อมูลส่วนตัว</h1>
-    <form action="edit_profile.php" enctype="multipart/form-data" method="post">
-        <p>
-            <img src="<?php echo $image; ?>" width="200">
-        <p>
-            <label for="image">รูปภาพ</label>
-            <input type="file" name="image" id="image">
-        </p>
-        <p>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" value="<?php echo $username; ?>" disabled>
-        </p>
-        <p>
-            <label for="firstname">ชื่อ</label>
-            <input type="text" name="firstname" id="firstname" value="<?php echo $firstname; ?>" required>
-        </p>
-        <p>
-            <label for="lastname">นามสกุล</label>
-            <input type="text" name="lastname" id="lastname" value="<?php echo $lastname; ?>" required>
-        </p>
-        <p>
-            <label for="phone">เบอร์โทรศัพท์</label>
-            <input type="text" name="phone" id="phone" value="<?php echo $phone; ?>" required>
-        </p>
-        <p>
-            <label for="email">อีเมล</label>
-            <input type="email" name="email" id="email" value="<?php echo $email; ?>" disabled>
-        </p>
-        <p>
-            <label for="address">ที่อยู่</label>
-            <input type="text" name="address" id="address" value="<?php echo $address; ?>" required>
-        </p>
-        <button type="submit">บันทึก</button>
-    </form>
+    <div class="container d-flex justify-content-center my-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>Edit Profile</h1>
+            </div>
+            <form action="edit_profile.php" enctype="multipart/form-data" method="post">
+                <div class="card-body fs-5">
+                    <div class="text-center">
+                        <img src="<?= $image; ?>" class="card-img-top" style="min-height: 300px; max-width: 300px;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Picture</label>
+                        <input type="file" name="image" id="image" class="form-control form-control-lg">
+                    </div>
+                    <div class="mb-3 d-flex">
+                        <div class="w-100 me-1">
+                            <label for="firstname" class="form-label">Firstname</label>
+                            <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>"
+                                class="form-control form-control-lg" required>
+                        </div>
+                        <div class="w-100 ms-1">
+                            <label for="lastname" class="form-label">Lastname</label>
+                            <input type="text" name="lastname" id="lastname" value="<?= $lastname ?>"
+                                class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" id="phone" value="<?= $phone; ?>"
+                            class="form-control form-control-lg" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" name="address" id="address" value="<?= $address; ?>"
+                            class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="profile.php" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -20,7 +20,7 @@ $img = $_SESSION["image"];
     </title>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FoodDelivery</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -30,7 +30,7 @@ $img = $_SESSION["image"];
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">หน้าแรก</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="order_status.php">สถานะคำสั่งซื้อ</a>
@@ -52,7 +52,7 @@ $img = $_SESSION["image"];
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="../logout.php">Sign out</a></li>
+                    <li><a class="dropdown-item text-danger" href="../logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
